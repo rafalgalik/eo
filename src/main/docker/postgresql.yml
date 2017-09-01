@@ -1,0 +1,11 @@
+version: '2'
+services:
+    eo-postgresql:
+        image: postgres:9.6.2
+        # volumes:
+        #     - ~/volumes/jhipster/eo/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=eo
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

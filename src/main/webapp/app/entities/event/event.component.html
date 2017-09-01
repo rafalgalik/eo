@@ -1,0 +1,70 @@
+<div>
+    <h2>
+        <span jhiTranslate="eoApp.event.home.title">Events</span>
+        <button class="btn btn-primary float-right jh-create-entity create-event" [routerLink]="['/', { outlets: { popup: ['event-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="eoApp.event.home.createLabel">
+            Create new Event
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="events">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="eoApp.event.name">Name</span></th>
+            <th><span jhiTranslate="eoApp.event.date">Date</span></th>
+            <th><span jhiTranslate="eoApp.event.place">Place</span></th>
+            <th><span jhiTranslate="eoApp.event.user">User</span></th>
+            <th><span jhiTranslate="eoApp.event.organiser">Organiser</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let event of events ;trackBy: trackId">
+                <td><a [routerLink]="['../event', event.id ]">{{event.id}}</a></td>
+                <td>{{event.name}}</td>
+                <td>{{event.date | date:'mediumDate'}}</td>
+                <td>{{event.place}}</td>
+                <td>
+                    <span *ngFor="let user of event.users; let last = last">
+                            {{user.login}}{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    {{event.organiser?.login}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../event', event.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'event/'+ event.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'event/'+ event.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

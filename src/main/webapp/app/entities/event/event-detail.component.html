@@ -1,0 +1,43 @@
+
+<div *ngIf="event">
+    <h2><span jhiTranslate="eoApp.event.detail.title">Event</span> {{event.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eoApp.event.name">Name</span></dt>
+        <dd>
+            <span>{{event.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="eoApp.event.date">Date</span></dt>
+        <dd>
+            <span>{{event.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eoApp.event.place">Place</span></dt>
+        <dd>
+            <span>{{event.place}}</span>
+        </dd>
+        <dt><span jhiTranslate="eoApp.event.user">User</span></dt>
+        <dd>
+            <span *ngFor="let user of event.users; let last = last">
+                {{user.login}}{{last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span jhiTranslate="eoApp.event.organiser">Organiser</span></dt>
+        <dd>
+            {{event.organiser?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'event/'+ event.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

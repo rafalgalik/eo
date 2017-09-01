@@ -1,0 +1,8 @@
+{
+    "error": {
+        "title": "Error page!",
+        "403": "You are not authorized to access the page.",
+        "wronglogin": "Logged user must be organiser",
+        "wronglogindelete": "Only organiser can delete event."
+    }
+}

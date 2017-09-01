@@ -1,0 +1,25 @@
+{
+    "eoApp": {
+        "event" : {
+            "home": {
+                "title": "Events",
+                "createLabel": "Dodaj Event",
+                "createOrEditLabel": "Dodaj lub edytuj: Event"
+            },
+            "created": "Utworzono nowy Event z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Event z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Event z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Event {{ id }}?"
+            },
+            "detail": {
+                "title": "Event"
+            },
+            "name": "Name",
+            "date": "Date",
+            "place": "Place",
+            "user": "User",
+            "organiser": "Organiser"
+        }
+    }
+}
